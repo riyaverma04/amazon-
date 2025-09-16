@@ -1,0 +1,123 @@
+.main{
+    width: 100%;
+    height: auto;
+    padding: 1.2rem 2rem;
+}
+.product-grid{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+
+
+}
+.product-container{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    border: 0.5px solid rgb(228, 228, 228);
+}
+.product-container .product-img{
+    width: 100%;
+
+}
+.product-container .product-info{
+    padding: 1rem;
+    display: grid;
+    gap: 0.4rem;
+}
+.product-container .product-name{
+    font-size: 1.3rem;
+}
+.product-container .product-info .product-price{
+    font-weight: bolder;
+    font-size: 20px;
+}
+.product-container .add-to-cart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   width: 148px;
+    padding: 8px 4px;
+    border-radius: 10px;
+    background: orange;
+    border: none;
+    margin-bottom: 22px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+}
+.product-container .add-to-cart:hover{
+    background: rgb(228, 154, 15);
+    width: 150px;
+    padding: 9px 5px;
+    margin-bottom:20px ;
+    transition: ease-in-out;
+    font-size: 17pz;
+
+}
+
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+  /* Styles for phones */
+  .product-grid{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+
+
+}
+}
+
+/* Small devices (tablets, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  /* Styles for small tablets */
+  .product-grid{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+
+
+}
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Styles for tablets */
+  .product-grid{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+
+
+}
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* Styles for desktops */
+  .product-grid{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+
+
+}
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /* Styles for large desktops */
+}
+
