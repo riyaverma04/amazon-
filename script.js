@@ -1,4 +1,5 @@
-
+import { products } from "./data/product.js";
+import { cartItem } from "./data/cart.js";
 
 
 let productHtml = ``
@@ -20,7 +21,7 @@ products.forEach((item)=>{
                             </select>
                         </div>
                     </div>
-                    <button class="add-to-cart" data-product-name="${item.name}">Add to cart</button>
+                    <button class="add-to-cart" data-product-id="${item.id}">Add to cart</button>
                 </div>
     `
 })
@@ -28,10 +29,11 @@ products.forEach((item)=>{
 document.querySelector('.js-product-grid').innerHTML = productHtml;
 document.querySelectorAll(".add-to-cart").forEach((button)=>{
     button.addEventListener('click',()=>{
-       const addedItem = button.dataset.productName;
+       const addedItem = button.dataset.productId;
        let matchingItem;
+      
         cartItem.forEach((item)=>{
-            if(addedItem === item.name){
+            if(addedItem === item.id){
                 matchingItem = item
             }
         })
@@ -40,17 +42,25 @@ document.querySelectorAll(".add-to-cart").forEach((button)=>{
             matchingItem.quantity++;
         }else{
             cartItem.push({
-                name: addedItem,
+                id: addedItem,
                 quantity: 1
             })
         }
+
+       
        
 
        
    
        
         //dynamically changing the number of items in the cart which is shown on the top of the cart
-       document.querySelector('.item-count').innerText = cartItem.length;
+        console.log(cartItem)
+         let countQuantity =0;;
+        cartItem.forEach((item) =>{
+             countQuantity += item.quantity;
+            })
+            
+            document.querySelector('.item-count').innerText = countQuantity;
     })
 })
 
