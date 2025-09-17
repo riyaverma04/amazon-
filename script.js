@@ -1,9 +1,9 @@
 import { products } from "./data/product.js";
-import { cartItem } from "./data/cart.js";
+import { cartItem, updateCartQuantity } from "./data/cart.js";
 
 
 let productHtml = ``
-products.forEach((item)=>{
+products.forEach((item) => {
     productHtml += `
     <div class="product-container">
                     <img src="${item.img}" alt="" class="product-img">
@@ -25,42 +25,49 @@ products.forEach((item)=>{
                 </div>
     `
 })
+const addItemToCart = (addedItem) => {
+
+
+    let matchingItem;
+
+    cartItem.forEach((item) => {
+        if (addedItem === item.id) {
+            matchingItem = item
+        }
+    })
+
+    if (matchingItem) {
+        matchingItem.quantity++;
+    } else {
+        cartItem.push({
+            id: addedItem,
+            quantity: 1
+        })
+    }
+
+
+}
+
+
+
+
 
 document.querySelector('.js-product-grid').innerHTML = productHtml;
-document.querySelectorAll(".add-to-cart").forEach((button)=>{
-    button.addEventListener('click',()=>{
-       const addedItem = button.dataset.productId;
-       let matchingItem;
-      
-        cartItem.forEach((item)=>{
-            if(addedItem === item.id){
-                matchingItem = item
-            }
-        })
+document.querySelectorAll(".add-to-cart").forEach((button) => {
+    button.addEventListener('click', () => {
 
-        if(matchingItem){
-            matchingItem.quantity++;
-        }else{
-            cartItem.push({
-                id: addedItem,
-                quantity: 1
-            })
-        }
+        const addedItem = button.dataset.productId;
+        addItemToCart(addedItem)
+        updateCartQuantity()
 
-       
-       
 
-       
-   
-       
-        //dynamically changing the number of items in the cart which is shown on the top of the cart
-        console.log(cartItem)
-         let countQuantity =0;;
-        cartItem.forEach((item) =>{
-             countQuantity += item.quantity;
-            })
-            
-            document.querySelector('.item-count').innerText = countQuantity;
+
+
+
+
+
+
+
     })
 })
 
