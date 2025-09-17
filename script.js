@@ -1,36 +1,4 @@
-console.log("consoling")
-let products = [
-    {
-        img : "./images/socks.jpg",
-        name: "Black and gray athletic cotton socks",
-        rating: {
-            stars: 4.5,
-            count : 54,
-        },
-        priceCents: 1090,
-        
-    },
-    {
-        img : "./images/socks.jpg",
-        name: "Black and gray athletic cotton socks",
-        rating: {
-            stars: 4.5,
-            count : 54,
-        },
-        priceCents: 1090,
-        
-    },
-    {
-        img : "./images/socks.jpg",
-        name: "Black and gray athletic cotton socks",
-        rating: {
-            stars: 4.5,
-            count : 54,
-        },
-        priceCents: 1090,
-        
-    }
-]
+
 
 
 let productHtml = ``
@@ -52,9 +20,41 @@ products.forEach((item)=>{
                             </select>
                         </div>
                     </div>
-                    <button class="add-to-cart">Add to cart</button>
+                    <button class="add-to-cart" data-product-name="${item.name}">Add to cart</button>
                 </div>
     `
 })
 
 document.querySelector('.js-product-grid').innerHTML = productHtml;
+document.querySelectorAll(".add-to-cart").forEach((button)=>{
+    button.addEventListener('click',()=>{
+       const addedItem = button.dataset.productName;
+       let matchingItem;
+        cartItem.forEach((item)=>{
+            if(addedItem === item.name){
+                matchingItem = item
+            }
+        })
+
+        if(matchingItem){
+            matchingItem.quantity++;
+        }else{
+            cartItem.push({
+                name: addedItem,
+                quantity: 1
+            })
+        }
+       
+
+       
+   
+       
+        //dynamically changing the number of items in the cart which is shown on the top of the cart
+       document.querySelector('.item-count').innerText = cartItem.length;
+    })
+})
+
+
+
+
+
