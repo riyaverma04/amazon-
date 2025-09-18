@@ -1,0 +1,621 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.body-container{
+    width: 90vw;
+    height: auto;
+    padding: 0 2rem;
+    text-transform: capitalize;
+
+}
+.header-container{
+    display: grid;
+    grid-template-columns: 492px auto;
+    padding: 1rem 0;
+
+
+}
+.logo img{
+    width: 127px;
+
+
+}
+.checkout-items-number{
+   
+    font-size: 25px;
+    font-weight: 900;
+}
+.main{
+    display: grid;
+    grid-template-columns: auto 450px;
+    gap: 2rem;
+}
+
+.order-checkout-container{
+    display: grid;
+   gap: 1rem;
+}
+.order-container{
+    border: 0.4px solid gray;
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+    height: auto;
+
+}
+.order-container .delivery-date{
+    color: green;
+    font-size: 20px;
+    font-weight: 900;
+}
+.order-container .order-info{
+    display: grid;
+    grid-template-columns: 200px auto auto;
+    gap: 1rem;
+    
+
+}
+.order-product-image img{
+    width: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.order-product-info .order-product-name{
+    font-size: 22px ;
+    font-weight: 900;
+    line-height: 25px;
+   
+
+
+}
+.order-product-info p{
+    margin: 0.5rem 0;
+}
+.order-product-price{
+    color: brown;
+    font-size: 22px;
+    font-weight: 900;
+}
+.order-product-quantity{
+    font-weight: 900;
+}
+
+.order-delivery-info{
+    display: grid;
+    grid-template-rows:42px auto;
+    
+
+
+}
+.order-delivery-info .order-delivery-heading{
+    font-size: 18px;
+    font-weight: bolder;
+    
+}
+.delivery-date-form{
+    display: grid;
+    grid-template-rows: auto auto auto ;
+    height: auto;
+    gap: 0.5rem;
+   
+}
+.delivery-date-form .delivery-date-select, input{
+  font-weight: 900;
+}
+
+.checkout-order-summary{
+    display: grid;
+    grid-template-rows: 60px auto;
+   
+    border: 0.4px solid gray;
+    height: 286px;
+    padding: 0 1rem;
+}
+.checkout-order-summary-info{
+    display: grid;
+    grid-template-rows: repeat(4, 50px);
+    gap: 0.1rem;
+    
+
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+
+/* Extra Small Devices (phones, <576px) */
+@media (max-width: 575.98px) {
+  /* CSS for very small phones */
+  .body-container{
+    width: 95vw;
+    padding: 1rem  ;
+  }
+  
+.header-container{
+    width: 100vw;
+    display: grid;
+    grid-template-columns:100px auto;
+   
+    align-items: center;
+   
+    
+
+
+}
+.logo img{
+    width: 90px;
+
+
+}
+.checkout-items-number{
+   
+    font-size: 18px;
+    font-weight: 900;
+    text-align: center;
+}
+.main{
+    width: 95vw;
+    display: grid;
+    grid-template-columns: auto ;
+    gap: 2rem;
+}
+
+.order-checkout-container{
+    display: grid;
+   gap: 1rem;
+}
+.checkout-heading-container{
+    font-size: 10px;
+}
+.order-container{
+    border: 0.4px solid gray;
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+    height: auto;
+
+}
+.order-container .delivery-date{
+   
+    font-size: 18px;
+   
+}
+.order-container .order-info{
+    display: grid;
+    grid-template-columns:  auto;
+    gap: 0.8rem;
+    
+
+}
+.order-product-image img{
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.order-product-info .order-product-name{
+    font-size: 18px ;
+    font-weight: 900;
+    line-height: 25px;
+   
+
+
+}
+.order-product-info p{
+    margin: 0.4rem 0;
+}
+.order-product-price{
+   
+    font-size: 18px;
+   
+}
+.order-product-quantity{
+    font-weight: 500;
+}
+
+
+
+
+
+
+.checkout-order-summary{
+    display: grid;
+    grid-template-rows: 40px auto;
+   
+    border: 0.4px solid gray;
+    height:auto;
+    padding: 0 1rem;
+}
+.checkout-order-summary-heading{
+    font-size: 15px;
+
+}
+.checkout-order-summary-info{
+    display: grid;
+    grid-template-rows: repeat(4, 40px);
+    gap: 0.1rem;
+    
+
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+
+}
+}
+
+/* Small Devices (phones, 576px–767px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  /* CSS for normal phones */
+
+  .body-container{
+    width: 95vw;
+    padding: 1rem  ;
+  }
+  
+.header-container{
+    width: 100vw;
+    display: grid;
+    grid-template-columns:100px auto;
+   
+    align-items: center;
+   
+    
+
+
+}
+.logo img{
+    width: 120px;
+
+
+}
+.checkout-items-number{
+   
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+}
+.main{
+    width: 95vw;
+    display: grid;
+    grid-template-columns: auto 300px ;
+    gap: 1.5rem;
+}
+
+.order-checkout-container{
+    display: grid;
+   gap: 1rem;
+}
+.checkout-heading-container{
+    font-size: 12px;
+}
+.order-container{
+    border: 0.4px solid gray;
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+    height: auto;
+
+}
+.order-container .delivery-date{
+   
+    font-size: 18px;
+   
+}
+.order-container .order-info{
+    display: grid;
+    grid-template-columns:  auto;
+    gap: 0.6rem;
+    
+
+}
+.order-product-image img{
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.order-product-info .order-product-name{
+    font-size: 18px ;
+    font-weight: 900;
+    line-height: 22px;
+   
+
+
+}
+.order-product-info p{
+    margin: 0.3rem 0;
+}
+.order-product-price{
+   
+    font-size: 18px;
+   
+}
+.order-product-quantity{
+    font-weight: 500;
+}
+
+
+
+
+
+
+.checkout-order-summary{
+    display: grid;
+    grid-template-rows: 40px auto;
+   
+    border: 0.4px solid gray;
+    height:300px;
+    padding: 0 1rem;
+}
+.checkout-order-summary-heading{
+    font-size: 15px;
+
+}
+.checkout-order-summary-info{
+    display: grid;
+    grid-template-rows: repeat(4, 40px);
+    gap: 0.1rem;
+    
+
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+
+}
+}
+
+
+/* Medium Devices (tablets, 768px–991px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* CSS for tablets */
+ 
+  /* CSS for normal phones */
+
+  .body-container{
+    width: 100vw;
+    padding: 1rem  ;
+  }
+  
+.header-container{
+    width: 95vw;
+    display: grid;
+    grid-template-columns:100px auto;
+   
+    align-items: center;
+   
+    
+
+
+}
+.logo img{
+    width: 120px;
+
+
+}
+.checkout-items-number{
+   
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+}
+.main{
+    width: 95vw;
+    display: grid;
+    grid-template-columns: auto 300px ;
+    gap: 1.5rem;
+}
+
+.order-checkout-container{
+    display: grid;
+   gap: 1rem;
+}
+.checkout-heading-container{
+    font-size: 12px;
+}
+.order-container{
+    border: 0.4px solid gray;
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+    height: auto;
+
+}
+.order-container .delivery-date{
+   
+    font-size: 18px;
+   
+}
+.order-container .order-info{
+    display: grid;
+    grid-template-columns:  auto;
+    gap: 0.6rem;
+    
+
+}
+.order-product-image img{
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.order-product-info .order-product-name{
+    font-size: 18px ;
+    font-weight: 900;
+    line-height: 22px;
+   
+
+
+}
+.order-product-info p{
+    margin: 0.3rem 0;
+}
+.order-product-price{
+   
+    font-size: 18px;
+   
+}
+.order-product-quantity{
+    font-weight: 500;
+}
+
+
+
+
+
+
+.checkout-order-summary{
+    display: grid;
+    grid-template-rows: 40px auto;
+   
+    border: 0.4px solid gray;
+    height:300px;
+    padding: 0 1rem;
+}
+.checkout-order-summary-heading{
+    font-size: 15px;
+
+}
+.checkout-order-summary-info{
+    display: grid;
+    grid-template-rows: repeat(4, 40px);
+    gap: 0.1rem;
+    
+
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+
+}
+}
+
+
+/* Large Devices (desktops, 992px–1199px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* CSS for small laptops/desktops */
+  .body-container{
+    width: 100vw;
+    height: auto;
+    padding: 0 2rem;
+    text-transform: capitalize;
+
+}
+.header-container{
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 492px auto;
+    padding: 1rem 0;
+
+
+}
+.logo img{
+    width: 127px;
+
+
+}
+.checkout-items-number{
+   
+    font-size: 25px;
+    font-weight: 900;
+}
+.main{
+    display: grid;
+    grid-template-columns: auto 300px;
+    gap: 2rem;
+}
+
+.order-checkout-container{
+    display: grid;
+   gap: rem;
+}
+.order-container{
+    border: 0.4px solid gray;
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+    height: auto;
+
+}
+.order-container .delivery-date{
+    color: green;
+    font-size: 20px;
+    font-weight: 900;
+}
+.order-container .order-info{
+    display: grid;
+    grid-template-columns: 150px auto auto;
+    gap: 0.8rem;
+    
+
+}
+.order-product-image img{
+    width: 150px;
+  
+}
+.order-product-info .order-product-name{
+    font-size: 18px ;
+    
+    line-height: 22px;
+   
+
+
+}
+.order-product-info p{
+    margin: 0.5rem 0;
+}
+.order-product-price{
+   
+    font-size: 20px;
+    font-weight: 900;
+}
+.order-product-quantity{
+    font-weight: 500;
+}
+
+.order-delivery-info{
+    display: grid;
+    grid-template-rows:40px auto;
+    
+
+
+}
+.order-delivery-info .order-delivery-heading{
+    font-size: 18px;
+    font-weight: bolder;
+    
+}
+.delivery-date-form{
+    display: grid;
+    grid-template-rows: auto auto auto ;
+    height: auto;
+    
+   
+}
+.delivery-date-form .delivery-date-select, input{
+  font-weight: 900;
+}
+
+
+
+}
+
+/* Extra Large Devices (large desktops, 1200px–1399px) */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+  /* CSS for big desktops */
+}
+
+/* Extra Extra Large Devices (very large screens, 1400px and above) */
+@media (min-width: 1400px) {
+  /* CSS for ultra-wide screens */
+}
