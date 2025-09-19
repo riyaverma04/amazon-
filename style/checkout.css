@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 .body-container{
-    width: 90vw;
+    width: 100vw;
     height: auto;
     padding: 0 2rem;
     text-transform: capitalize;
@@ -613,6 +613,18 @@
 /* Extra Large Devices (large desktops, 1200px–1399px) */
 @media (min-width: 1200px) and (max-width: 1399.98px) {
   /* CSS for big desktops */
+  .main{
+    display: grid;
+    grid-template-columns: auto 350px;
+    gap: 2rem;
+}
+.order-container .order-info{
+    display: grid;
+    grid-template-columns: 150px 300px auto;
+    gap: 1rem;
+    
+
+}
 }
 
 /* Extra Extra Large Devices (very large screens, 1400px and above) */
