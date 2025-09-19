@@ -79,6 +79,18 @@
     font-size: 22px;
     font-weight: 900;
 }
+.order-product-update{
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.order-product-update .update{
+    color: orange;
+}
+.order-product-update .delete{
+    color: red;
+}
 .order-product-quantity{
     font-weight: 900;
 }
@@ -111,7 +123,7 @@
     grid-template-rows: 60px auto;
    
     border: 0.4px solid gray;
-    height: 286px;
+    height: 368px;
     padding: 0 1rem;
 }
 .checkout-order-summary-info{
@@ -125,6 +137,28 @@
     display: flex;
     justify-content: space-between;
 
+}
+.total-checkout-price{
+    display: flex;
+    justify-content: space-between;
+    
+   
+    color: orange;
+    font-size: 22px;
+    font-weight: 900;
+}
+.total-price{
+    color: black;
+}
+.place-order{
+    background-color: orange;
+    color: white;
+        margin: 16px 0 2rem 0;
+    padding: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 500;
 }
 
 

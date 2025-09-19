@@ -30,6 +30,10 @@ cartItem.forEach((product)=>{
                             <p class="order-product-name">${matchingItem.name}</p>
                             <p class="order-product-price">$ ${(matchingItem.priceCents /100).toFixed(2)}</p>
                             <p class="order-product-quantity">quantity: ${product.quantity}</p>
+                             <div class="order-product-update">
+                                <p class="update">update</p>
+                                <p class="delete">delete</p>
+                            </div>
                         </div>
                         <div class="order-delivery-info">
                             <div class="order-delivery-heading">
