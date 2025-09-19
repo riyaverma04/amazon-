@@ -1,7 +1,7 @@
 import { cartItem } from '../data/cart.js';
 import { products } from '../data/product.js';
 
-const orderContainer = document.querySelector('.order-container');
+const orderContainer = document.querySelector('.order-checkout-container');
 let cartSummaryHtml = ``;
 
 
@@ -17,6 +17,7 @@ cartItem.forEach((product)=>{
      })
 
     cartSummaryHtml += `
+    <div class="order-container">
      <div class="delivery-date">Delivery date : Tuesday, june 21
 
                     </div>
@@ -35,11 +36,11 @@ cartItem.forEach((product)=>{
                                 choose a delivery date
                             </div>
                             <div class="delivery-date-form">
-                                <div class="delivery-date-select"><input type="radio" name="delivery-date" id="delivery-date">after 2 days</div>
+                                <div class="delivery-date-select"><input type="radio" name="${matchingItem.id}-delivery-date" id="delivery-date">after 2 days</div>
                                 
-                               <div class="delivery-date-select"> <input type="radio" name="delivery-date" id="delivery-date">
+                               <div class="delivery-date-select"> <input type="radio" name="${matchingItem.id}-delivery-date" id="delivery-date">
                                 after 4days</div>
-                               <div class="delivery-date-select"><input type="radio" name="delivery-date" id="delivery-date">
+                               <div class="delivery-date-select"><input type="radio" name="${matchingItem.id}-delivery-date" id="delivery-date">
                                 after 6 days</div>
                                 
                             </div>
@@ -47,6 +48,7 @@ cartItem.forEach((product)=>{
 
                         </div>
                     </div>
+                     </div>
     `
 })
 orderContainer.innerHTML = cartSummaryHtml
