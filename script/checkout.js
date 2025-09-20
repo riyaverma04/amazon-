@@ -1,4 +1,4 @@
-import { cartItem } from '../data/cart.js';
+import { cartItem, deleteProductFromCart } from '../data/cart.js';
 import { products } from '../data/product.js';
 
 const orderContainer = document.querySelector('.order-checkout-container');
@@ -17,7 +17,7 @@ cartItem.forEach((product)=>{
      })
 
     cartSummaryHtml += `
-    <div class="order-container">
+    <div class="order-container js-order-container-${matchingItem.id}">
      <div class="delivery-date">Delivery date : Tuesday, june 21
 
                     </div>
@@ -32,7 +32,7 @@ cartItem.forEach((product)=>{
                             <p class="order-product-quantity">quantity: ${product.quantity}</p>
                              <div class="order-product-update">
                                 <p class="update">update</p>
-                                <p class="delete">delete</p>
+                                <p class="delete" data-product-id="${product.id}">delete</p>
                             </div>
                         </div>
                         <div class="order-delivery-info">
@@ -56,3 +56,18 @@ cartItem.forEach((product)=>{
     `
 })
 orderContainer.innerHTML = cartSummaryHtml
+//deleting the item from the cart
+document.querySelectorAll('.delete')
+.forEach((deleteItem)=>{
+    deleteItem.addEventListener('click',()=>{
+        let productId = deleteItem.dataset.productId;
+        deleteProductFromCart(productId)
+        let container = document.querySelector(`.js-order-container-${productId}`);
+       
+        container.remove();
+
+        console.log(cartItem);
+      
+    })
+})
+

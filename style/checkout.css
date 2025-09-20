@@ -86,11 +86,17 @@
     align-items: center;
 }
 .order-product-update .update{
+    cursor: pointer;
     color: orange;
 }
 .order-product-update .delete{
+    cursor: pointer;
     color: red;
 }
+.order-product-update .delete:active{
+    color: crimson;
+}
+
 .order-product-quantity{
     font-weight: 900;
 }

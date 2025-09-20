@@ -44,6 +44,7 @@ const addItemToCart = (addedItem) => {
             quantity: 1
         })
     }
+    console.log(cartItem)
 
 
 }
