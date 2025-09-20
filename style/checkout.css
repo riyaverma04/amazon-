@@ -73,7 +73,7 @@
 }
 .checkout-items-number-count{
     color: orange
-    
+
 }
 .order-product-info p{
     margin: 0.5rem 0;
@@ -89,9 +89,25 @@
     justify-content: space-between;
     align-items: center;
 }
-.order-product-update .update{
+.update{
     cursor: pointer;
     color: orange;
+}
+.update:active{
+    color: darkorange;
+}
+
+ .quantity-hide-input , .quantity-hide-save{
+    display: none;
+}
+ .quantity-show-input{
+    width: 30px;
+    display: inline;
+}
+
+ .quantity-show-save{
+   display: inline;
+   color: green;
 }
 .order-product-update .delete{
     cursor: pointer;
@@ -124,7 +140,7 @@
     gap: 0.5rem;
    
 }
-.delivery-date-form .delivery-date-select, input{
+.delivery-date-form .delivery-date-select-input{
   font-weight: 900;
 }
 

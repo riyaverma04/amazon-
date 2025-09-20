@@ -33,14 +33,28 @@ export let cartItem = getCartFromLocalStorage() || [
 ];
 
 
+//updating the product quantity already present in the cart via using update button
+export function updateProductQuantity(productId, newQuantity){
+    let matchingItem ;
+    cartItem.forEach((item)=>{
+        if(productId === item.id){
+            matchingItem = item;
+            
+        }
+    })
+    
+    matchingItem.quantity  = newQuantity
+    saveCartToLocalStorage(cartItem)
+    
 
+}
 
 
 
 //dynamically changing the number of items in the cart which is shown on the top of the cart
 export const updateCartQuantity = () => {
 
-    let countQuantity = 0;;
+    let countQuantity = 0;
     cartItem.forEach((item) => {
         return countQuantity += item.quantity;
     })
