@@ -45,12 +45,40 @@ export const updateCartQuantity = () => {
         return countQuantity += item.quantity;
     })
 
- 
-    document.querySelector('.item-count').innerText = countQuantity;
-   
-    saveCartToLocalStorage(cartItem);
+    //stored the cart quantity in the local storage
 
+    localStorage.setItem('cartQuantity', countQuantity);
+    //getting the cart quantity from the local storage
+    try {
+    let storedCountQuanity = localStorage.getItem('cartQuantity') ;
+    let getStoredCountQuantity = storedCountQuanity ? JSON.parse(storedCountQuanity) : 0;
+    let itemCountEl = document.querySelector('.item-count');
+
+    //Defensive coding: Even if the DOM isn’t ready, you can prevent a crash:
+    if (itemCountEl) {
+    itemCountEl.innerText = getStoredCountQuantity;
+    }
+     saveCartToLocalStorage(cartItem);
+     return `(${getStoredCountQuantity} items)`
+    } catch(e) {
+        console.warn("Invalid cart quantity data in localStorage, resetting...");
+        let getStoredCountQuantity = 0; // fallback will be used
+    }
+
+
+ 
+    console.log(countQuantity);
+   
+    
 }
+   
+       
+    
+
+   
+   
+
+
 
 //removing product from the cart
 

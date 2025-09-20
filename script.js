@@ -25,6 +25,7 @@ products.forEach((item) => {
                 </div>
     `
 })
+window.onload = updateCartQuantity();
 const addItemToCart = (addedItem) => {
 
 

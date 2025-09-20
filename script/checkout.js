@@ -1,5 +1,14 @@
-import { cartItem, deleteProductFromCart } from '../data/cart.js';
+import { cartItem, deleteProductFromCart, updateCartQuantity } from '../data/cart.js';
 import { products } from '../data/product.js';
+
+
+
+
+
+
+//displaying the cart items count on the top of the cart
+let chechoutItemsCount= document.querySelector('.checkout-items-number-count');
+chechoutItemsCount.innerText = updateCartQuantity();
 
 const orderContainer = document.querySelector('.order-checkout-container');
 let cartSummaryHtml = ``;
@@ -65,6 +74,7 @@ document.querySelectorAll('.delete')
         let container = document.querySelector(`.js-order-container-${productId}`);
        
         container.remove();
+       chechoutItemsCount.innerText = updateCartQuantity();
 
         console.log(cartItem);
       

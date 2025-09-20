@@ -71,6 +71,10 @@
 
 
 }
+.checkout-items-number-count{
+    color: orange
+    
+}
 .order-product-info p{
     margin: 0.5rem 0;
 }
