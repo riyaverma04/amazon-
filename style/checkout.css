@@ -84,17 +84,18 @@
     font-weight: 900;
 }
 .order-product-update{
-    width: 100px;
+    width: 200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 .update{
     cursor: pointer;
     color: orange;
 }
 .update:active{
-    color: darkorange;
+    color: rgb(119, 66, 3);
 }
 
  .quantity-hide-input , .quantity-hide-save{
@@ -108,6 +109,11 @@
  .quantity-show-save{
    display: inline;
    color: green;
+   cursor: pointer;
+}
+.quantity-show-save:active{
+    color: rgb(1, 71, 1);
+
 }
 .order-product-update .delete{
     cursor: pointer;
