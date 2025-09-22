@@ -42,7 +42,8 @@ const addItemToCart = (addedItem) => {
     } else {
         cartItem.push({
             id: addedItem,
-            quantity: 1
+            quantity: 1,
+            deliveryOptionsId : '1'
         })
     }
     console.log(cartItem)

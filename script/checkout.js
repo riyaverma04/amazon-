@@ -1,14 +1,13 @@
 import { cartItem, deleteProductFromCart, saveCartToLocalStorage, updateCartQuantity, updateProductQuantity } from '../data/cart.js';
+import { deliveryOptions } from '../data/deliveryOptions.js';
 import { products } from '../data/product.js';
+import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'
 
 
 
 
 
-let today = dayjs();
-let deliveryDate = today.add(7,'day').format('dddd, MMMM D');
-let deliveryDateAfter4Days = today.add(4,'day').format('dddd, MMMM D');
-let deliveryDateAfter2Days = today.add(2,'day').format('dddd, MMMM D');
+
 
 //displaying the cart items count on the top of the cart
 let checkoutItemsCount= document.querySelector('.checkout-items-number-count');
@@ -31,7 +30,7 @@ cartItem.forEach((product)=>{
 
     cartSummaryHtml += `
     <div class="order-container js-order-container-${matchingItem.id}">
-     <div class="delivery-date">Delivery date : Tuesday, june 21
+     <div class="delivery-date-selected">Delivery date : Tuesday, june 21
 
                     </div>
                     <div class="order-info">
@@ -58,14 +57,8 @@ cartItem.forEach((product)=>{
                                 choose a delivery date
                             </div>
                             <div class="delivery-date-form">
-                                <div class="delivery-date-select"><input type="radio" 
-                                class="delivery-date-select-input"
-                                name="${matchingItem.id}-delivery-date" id="delivery-date"><span class="delivery-date-7"></span></div>
+                            ${generateDeliveryOptionsHtml(matchingItem.id ,product)}
                                 
-                               <div class="delivery-date-select"> <input type="radio" name="${matchingItem.id}-delivery-date" id="delivery-date">
-                                <span class="delivery-date-4"></span></div>
-                               <div class="delivery-date-select"><input type="radio" name="${matchingItem.id}-delivery-date" id="delivery-date">
-                               <span class="delivery-date-2"></span></div>
                                 
                             </div>
 
@@ -76,6 +69,57 @@ cartItem.forEach((product)=>{
     `
 })
 orderContainer.innerHTML = cartSummaryHtml
+
+
+
+//generating deliveryoption html 
+function generateDeliveryOptionsHtml(matchingItemId,cartItem){
+   
+    let deliveryOptionsHtml = ``;           
+    deliveryOptions.forEach((option)=>{
+        let deliveryPrice = (option.deliveryPriceCents / 100).toFixed(2);
+        let isChecked = option.id == cartItem.deliveryOptionsId  ;
+       
+        let today = dayjs();
+        let deliveryDate = today.add(option.day,'day').format('dddd, MMMM D');
+        deliveryOptionsHtml +=  `
+         <div class="delivery-option-container">
+                                <div class="delivery-date-select">
+                                <input type="radio" 
+                                ${isChecked ? "checked" : ""}
+                                class="delivery-date-select-input"
+                                name="${matchingItemId}-delivery-date"data-product-id="${matchingItemId}"  id="delivery-date">
+                                <span class="delivery-date">${deliveryDate}</span>
+                                </div>
+                                <div class="delivery-date-discription">
+                                <p>${`$${deliveryPrice}`} - shipping</p>
+                                </div>
+                                </div>
+
+        
+        `
+
+
+
+    })
+return deliveryOptionsHtml;}
+
+document.querySelectorAll('.delivery-date-select-input').forEach((input) => {
+    input.addEventListener('change', (event) => {
+        let productId = event.target.dataset.productId; 
+        let selected = document.querySelector(`input[name="${productId}-delivery-date"]:checked`);
+            if (selected) {
+           console.log("Selected value:", selected.value);
+            } else {
+            console.log("No option selected yet.");
+            }
+        // console.log("Product ID:", productId);
+        // // You can access the selected value using event.target.value
+        // console.log("Selected value:", event.target.value);
+    });
+});
+
+
 //deleting the item from the cart
 document.querySelectorAll('.delete')
 .forEach((deleteItem)=>{
@@ -95,10 +139,7 @@ document.querySelectorAll('.delete')
 
 
 
-//displaying the delivery date dynamically
-document.querySelectorAll('.delivery-date-7').forEach((date)=>{
-    date.innerText = deliveryDate;
-})
+
 
 
 document.querySelectorAll('.delivery-date-4').forEach((date)=>{

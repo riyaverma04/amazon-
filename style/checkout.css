@@ -45,7 +45,7 @@
     height: auto;
 
 }
-.order-container .delivery-date{
+.order-container .delivery-date-selected{
     color: green;
     font-size: 20px;
     font-weight: 900;
@@ -148,6 +148,15 @@
 }
 .delivery-date-form .delivery-date-select-input{
   font-weight: 900;
+}
+.delivery-date{
+    color: green;
+    font-size: 18px;
+}
+.delivery-date-discription{
+    color: grey;
+ 
+   margin: 2px 1rem;
 }
 
 .checkout-order-summary{

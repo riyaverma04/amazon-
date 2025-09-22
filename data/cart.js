@@ -14,6 +14,8 @@
 //                 }
 //             ]
 
+
+
 function getCartFromLocalStorage() {
     try {
         let storedItem = localStorage.getItem('cartItem');
@@ -28,8 +30,8 @@ export function saveCartToLocalStorage(cartItem){
 }
 
 export let cartItem = getCartFromLocalStorage() || [
-    { id: "PRD-A15P-9X7Q4", quantity: 2 },
-    { id: "PRD-S24U-8K3R2", quantity: 1 }
+    { id: "PRD-A15P-9X7Q4", quantity: 2,deliveryOptionsId : '2' },
+    { id: "PRD-S24U-8K3R2", quantity: 1 , deliveryOptionsId : '1' }
 ];
 
 
@@ -45,7 +47,7 @@ export function updateProductQuantity(productId, newQuantity){
     
     matchingItem.quantity  = newQuantity
     saveCartToLocalStorage(cartItem)
-    
+
 
 }
 
