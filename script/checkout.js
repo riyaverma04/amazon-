@@ -5,6 +5,10 @@ import { products } from '../data/product.js';
 
 
 
+let today = dayjs();
+let deliveryDate = today.add(7,'day').format('dddd, MMMM D');
+let deliveryDateAfter4Days = today.add(4,'day').format('dddd, MMMM D');
+let deliveryDateAfter2Days = today.add(2,'day').format('dddd, MMMM D');
 
 //displaying the cart items count on the top of the cart
 let checkoutItemsCount= document.querySelector('.checkout-items-number-count');
@@ -56,12 +60,12 @@ cartItem.forEach((product)=>{
                             <div class="delivery-date-form">
                                 <div class="delivery-date-select"><input type="radio" 
                                 class="delivery-date-select-input"
-                                name="${matchingItem.id}-delivery-date" id="delivery-date">after 2 days</div>
+                                name="${matchingItem.id}-delivery-date" id="delivery-date"><span class="delivery-date-7"></span></div>
                                 
                                <div class="delivery-date-select"> <input type="radio" name="${matchingItem.id}-delivery-date" id="delivery-date">
-                                after 4days</div>
+                                <span class="delivery-date-4"></span></div>
                                <div class="delivery-date-select"><input type="radio" name="${matchingItem.id}-delivery-date" id="delivery-date">
-                                after 6 days</div>
+                               <span class="delivery-date-2"></span></div>
                                 
                             </div>
 
@@ -88,6 +92,21 @@ document.querySelectorAll('.delete')
     })
 })
 
+
+
+
+//displaying the delivery date dynamically
+document.querySelectorAll('.delivery-date-7').forEach((date)=>{
+    date.innerText = deliveryDate;
+})
+
+
+document.querySelectorAll('.delivery-date-4').forEach((date)=>{
+    date.innerText = deliveryDateAfter4Days;
+})
+document.querySelectorAll('.delivery-date-2').forEach((date)=>{
+    date.innerText = deliveryDateAfter2Days;
+});
 
 //displaying  input and save button to update quantity 
 document.querySelectorAll('.update').forEach((updateItem)=>{
