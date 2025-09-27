@@ -14,6 +14,7 @@ let checkoutItemsCount= document.querySelector('.checkout-items-number-count');
 checkoutItemsCount.innerText = updateCartQuantity();
 
 const orderContainer = document.querySelector('.order-checkout-container');
+function renderCartSummary(){
 let cartSummaryHtml = ``;
 
 
@@ -230,9 +231,11 @@ document.querySelectorAll('.js-delivery-date-select').forEach((element)=>{
         let deliveryOptionId = element.dataset.deliveryOptionId;
         console.log(productId, deliveryOptionId)
         updateDeliveryDate(productId, deliveryOptionId)
+        renderCartSummary()
 
     })
 })
 
 
-
+}
+renderCartSummary()
