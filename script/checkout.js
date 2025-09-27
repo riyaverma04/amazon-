@@ -1,4 +1,4 @@
-import { cartItem, deleteProductFromCart, saveCartToLocalStorage, updateCartQuantity, updateProductQuantity } from '../data/cart.js';
+import { cartItem, deleteProductFromCart, saveCartToLocalStorage, updateCartQuantity, updateProductQuantity, updateDeliveryDate } from '../data/cart.js';
 import { deliveryOptions } from '../data/deliveryOptions.js';
 import { products } from '../data/product.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'
@@ -27,10 +27,20 @@ cartItem.forEach((product)=>{
         }
 
      })
+     let deliveryOptionsId = product.deliveryOptionsId;
+     let deliveryOption ;
+      deliveryOptions.forEach((option)=>{
+        if(option.id === deliveryOptionsId){
+            deliveryOption = option;
+        }
+      })
+     
+       let today = dayjs();
+        let deliveryDate = today.add(deliveryOption.day,'day').format('dddd, MMMM D');
 
     cartSummaryHtml += `
     <div class="order-container js-order-container-${matchingItem.id}">
-     <div class="delivery-date-selected">Delivery date : Tuesday, june 21
+     <div class="delivery-date-selected">Delivery date : ${deliveryDate}
 
                     </div>
                     <div class="order-info">
@@ -84,7 +94,11 @@ function generateDeliveryOptionsHtml(matchingItemId,cartItem){
         let deliveryDate = today.add(option.day,'day').format('dddd, MMMM D');
         deliveryOptionsHtml +=  `
          <div class="delivery-option-container">
-                                <div class="delivery-date-select">
+                                <div class="delivery-date-select js-delivery-date-select"
+                                data-product-id="${matchingItemId}"
+                                data-delivery-option-id="${option.id}"
+                                
+                                >
                                 <input type="radio" 
                                 ${isChecked ? "checked" : ""}
                                 class="delivery-date-select-input"
@@ -204,6 +218,20 @@ document.querySelectorAll('.js-save').forEach((saveItem)=>{
         
 
 })
+})
+
+
+
+//adding event listner to the date selected 
+document.querySelectorAll('.js-delivery-date-select').forEach((element)=>{
+    element.addEventListener('click',function(){
+        console.log('clicked')
+        let productId = element.dataset.productId;
+        let deliveryOptionId = element.dataset.deliveryOptionId;
+        console.log(productId, deliveryOptionId)
+        updateDeliveryDate(productId, deliveryOptionId)
+
+    })
 })
 
 

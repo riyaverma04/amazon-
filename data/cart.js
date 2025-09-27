@@ -115,3 +115,20 @@ export function deleteProductFromCart(productId){
     console.log(cartItem);
     saveCartToLocalStorage(cartItem);
 }
+
+
+export function updateDeliveryDate(productId, deliveryOptionsId){
+    console.log(productId, deliveryOptionsId)
+     let matchingItem ;
+    cartItem.forEach((item)=>{
+        if(productId === item.id){
+            matchingItem = item;
+            
+        }
+    })
+    
+    matchingItem.deliveryOptionsId  = deliveryOptionsId
+    console.log(matchingItem)
+    saveCartToLocalStorage(cartItem)
+
+}
