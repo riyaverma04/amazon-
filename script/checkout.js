@@ -1,40 +1,37 @@
 import { cartItem, deleteProductFromCart, saveCartToLocalStorage, updateCartQuantity, updateProductQuantity, updateDeliveryDate } from '../data/cart.js';
-import { deliveryOptions } from '../data/deliveryOptions.js';
-import { products } from '../data/product.js';
+import { deliveryOptions, getDeliveryOptions } from '../data/deliveryOptions.js';
+import { getProduct, products } from '../data/product.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'
+import { renderPaymentSummary } from './renderPaymentSummary.js';
 
 
 
 
 
 
-
+console.log(cartItem)
 //displaying the cart items count on the top of the cart
 let checkoutItemsCount= document.querySelector('.checkout-items-number-count');
-checkoutItemsCount.innerText = updateCartQuantity();
+checkoutItemsCount.innerText =`( ${updateCartQuantity()} items )`;
 
 const orderContainer = document.querySelector('.order-checkout-container');
-function renderCartSummary(){
+function renderCartSummary()
+{
+    renderPaymentSummary(updateCartQuantity());
+    renderPaymentSummary(updateCartQuantity());
+    console.log("hey",getProduct("PRD-A15P-9X7Q4"))
 let cartSummaryHtml = ``;
 
 
 
 cartItem.forEach((product)=>{
     let productId = product.id;
-    let matchingItem ;
-    products.forEach((productItem)=>{
-        if(productItem.id === productId){
-            matchingItem = productItem;
-        }
-
-     })
+    let matchingItem = getProduct(productId);
+    console.log(matchingItem)
+   
      let deliveryOptionsId = product.deliveryOptionsId;
-     let deliveryOption ;
-      deliveryOptions.forEach((option)=>{
-        if(option.id === deliveryOptionsId){
-            deliveryOption = option;
-        }
-      })
+     let deliveryOption = getDeliveryOptions(deliveryOptionsId)
+     
      
        let today = dayjs();
         let deliveryDate = today.add(deliveryOption.day,'day').format('dddd, MMMM D');
@@ -144,7 +141,9 @@ document.querySelectorAll('.delete')
         let container = document.querySelector(`.js-order-container-${productId}`);
        
         container.remove();
-       checkoutItemsCount.innerText = updateCartQuantity();
+        updateCartQuantity()
+       checkoutItemsCount.innerText =`( ${updateCartQuantity()} items )`;
+       renderPaymentSummary(updateCartQuantity());
 
         console.log(cartItem);
       
@@ -157,12 +156,12 @@ document.querySelectorAll('.delete')
 
 
 
-document.querySelectorAll('.delivery-date-4').forEach((date)=>{
-    date.innerText = deliveryDateAfter4Days;
-})
-document.querySelectorAll('.delivery-date-2').forEach((date)=>{
-    date.innerText = deliveryDateAfter2Days;
-});
+// document.querySelectorAll('.delivery-date-4').forEach((date)=>{
+//     date.innerText = deliveryDateAfter4Days;
+// })
+// document.querySelectorAll('.delivery-date-2').forEach((date)=>{
+//     date.innerText = deliveryDateAfter2Days;
+// });
 
 //displaying  input and save button to update quantity 
 document.querySelectorAll('.update').forEach((updateItem)=>{
@@ -201,7 +200,9 @@ document.querySelectorAll('.js-save').forEach((saveItem)=>{
         saveCartToLocalStorage(cartItem)
        
         document.querySelector(`.js-product-quantity-${productId}`).innerText = `quantity: ${parseInt(inputValue)}`;
-        checkoutItemsCount.innerText = updateCartQuantity();
+        updateCartQuantity();
+        checkoutItemsCount.innerText =`( ${updateCartQuantity()} items )`;
+        renderPaymentSummary(updateCartQuantity())
 
 
 
@@ -232,6 +233,8 @@ document.querySelectorAll('.js-delivery-date-select').forEach((element)=>{
         console.log(productId, deliveryOptionId)
         updateDeliveryDate(productId, deliveryOptionId)
         renderCartSummary()
+        renderPaymentSummary(updateCartQuantity());
+        
 
     })
 })

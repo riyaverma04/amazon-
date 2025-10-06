@@ -54,7 +54,7 @@ export function updateProductQuantity(productId, newQuantity){
 
 
 //dynamically changing the number of items in the cart which is shown on the top of the cart
-export const updateCartQuantity = () => {
+export let updateCartQuantity = () => {
 
     let countQuantity = 0;
     cartItem.forEach((item) => {
@@ -75,7 +75,7 @@ export const updateCartQuantity = () => {
     itemCountEl.innerText = getStoredCountQuantity;
     }
      saveCartToLocalStorage(cartItem);
-     return `(${getStoredCountQuantity} items)`
+     return getStoredCountQuantity
     } catch(e) {
         console.warn("Invalid cart quantity data in localStorage, resetting...");
         let getStoredCountQuantity = 0; // fallback will be used
