@@ -3,6 +3,7 @@ import { deliveryOptions, getDeliveryOptions } from '../data/deliveryOptions.js'
 import { getProduct, products } from '../data/product.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'
 import { renderPaymentSummary } from './renderPaymentSummary.js';
+import { checkoutEmpty } from './checkoutEmpty.js';
 
 
 
@@ -18,8 +19,10 @@ const orderContainer = document.querySelector('.order-checkout-container');
 function renderCartSummary()
 {
     renderPaymentSummary(updateCartQuantity());
-    renderPaymentSummary(updateCartQuantity());
-    console.log("hey",getProduct("PRD-A15P-9X7Q4"))
+        checkoutEmpty();
+
+    // renderPaymentSummary(updateCartQuantity());
+    // console.log("hey",getProduct("PRD-A15P-9X7Q4"))
 let cartSummaryHtml = ``;
 
 
@@ -144,6 +147,7 @@ document.querySelectorAll('.delete')
         updateCartQuantity()
        checkoutItemsCount.innerText =`( ${updateCartQuantity()} items )`;
        renderPaymentSummary(updateCartQuantity());
+       cartItem.length === 0 ? checkoutEmpty() : renderCartSummary();
 
         console.log(cartItem);
       
@@ -203,6 +207,8 @@ document.querySelectorAll('.js-save').forEach((saveItem)=>{
         updateCartQuantity();
         checkoutItemsCount.innerText =`( ${updateCartQuantity()} items )`;
         renderPaymentSummary(updateCartQuantity())
+        cartItem.length === 0 ? checkoutEmpty() : renderCartSummary();
+        
 
 
 
@@ -232,8 +238,9 @@ document.querySelectorAll('.js-delivery-date-select').forEach((element)=>{
         let deliveryOptionId = element.dataset.deliveryOptionId;
         console.log(productId, deliveryOptionId)
         updateDeliveryDate(productId, deliveryOptionId)
-        renderCartSummary()
+        cartItem.length === 0 ? checkoutEmpty() : renderCartSummary();
         renderPaymentSummary(updateCartQuantity());
+        checkoutEmpty();
         
 
     })
@@ -241,4 +248,4 @@ document.querySelectorAll('.js-delivery-date-select').forEach((element)=>{
 
 
 }
-renderCartSummary()
+cartItem.length === 0 ? checkoutEmpty() : renderCartSummary();
